@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+<ScrollView
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff"
+    android:scrollbars="none"
+    tools:context=".MainActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        >
+
+        <TextView
+            android:id="@+id/greeting"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp"
+            android:text="Hello User,"
+            android:textColor="#000"
+            android:textSize="30sp"
+
+            app:fontFamily="@font/overpass_semibold" />
+
+        <com.jaredrummler.materialspinner.MaterialSpinner
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/greeting"
+            android:layout_marginLeft="10dp"
+            android:id="@+id/location"
+            android:fontFamily="@font/overpass_semibold"
+            app:fontFamily="@font/overpass" />
+
+        <include layout="@layout/profile"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:id="@+id/profile_m"
+            android:layout_marginRight="20dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="20dp"
+            android:layout_alignParentRight="true" />
+
+        <ImageView
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:background="@drawable/online"
+            android:layout_marginRight="22dp"
+            android:elevation="2dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="52dp"
+
+            android:layout_alignParentRight="true" />
+
+        <HorizontalScrollView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scrollbars="none"
+            android:layout_marginTop="120dp"
+            >
+
+           <LinearLayout
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:orientation="horizontal">
+            <include layout="@layout/ads_row"
+                android:layout_width="160dp"
+                android:layout_marginLeft="10dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp" />
+            <include layout="@layout/ads_row1"
+                android:layout_width="160dp"
+                android:layout_marginLeft="10dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp" />
+
+               <include layout="@layout/ads_row2"
+                   android:layout_width="160dp"
+                   android:layout_marginLeft="10dp"
+                   android:layout_height="wrap_content"
+                   android:layout_marginStart="10dp" />
+
+           </LinearLayout>
+
+
+        </HorizontalScrollView>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="2dp"
+            android:layout_marginTop="280dp"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Shops"
+                android:textColor="#000"
+                android:fontFamily="@font/overpass_semibold"
+                android:textSize="20sp"
+                android:layout_marginLeft="10dp"/>
+
+
+            <include layout="@layout/shop5"
+                android:layout_width="match_parent"
+                android:layout_marginTop="5dp"
+                android:id="@+id/domino_card"
+                android:layout_height="wrap_content"
+                />
+
+            <include layout="@layout/shop1"
+                android:layout_width="match_parent"
+                android:id="@+id/kitchen_card"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                />
+            <include layout="@layout/shop2"
+                android:layout_width="match_parent"
+                android:id="@+id/oven_card"
+                android:layout_height="wrap_content"
+                />
+            <include layout="@layout/shop3"
+                android:layout_width="match_parent"
+                android:id="@+id/vascos_card"
+                android:layout_height="wrap_content"
+                />
+            <include layout="@layout/shop4"
+                android:id="@+id/ccd_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                />
+
+        </LinearLayout>
+
+
+
+
+
+    </RelativeLayout>
+
+
+</ScrollView>
+
+
+</LinearLayout>
+
+

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="160dp"
+    android:layout_height="160dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="20dp"
+    android:clickable="true"
+    app:cardBackgroundColor="#B5E6F1">
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:layout_width="65dp"
+        android:layout_height="65dp"
+        android:src="#CCEDF4"
+        android:layout_gravity="center"
+        />
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="90dp"
+        android:src="@drawable/food_item"
+        android:layout_gravity="center"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="   PICKUP\n134+ Eatries"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="120dp"
+        android:textSize="13sp"
+        android:fontFamily="@font/overpass_semibold"
+        />
+</androidx.cardview.widget.CardView>

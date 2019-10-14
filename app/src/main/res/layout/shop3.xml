@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:contentPadding="10dp"
+    app:cardBackgroundColor="#fff"
+    android:clickable="true"
+    app:cardCornerRadius="10dp"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ImageView
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:id="@+id/shop1id"
+            android:src="@drawable/shop2"
+            android:scaleType="centerCrop"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Vascos"
+            android:textSize="20sp"
+            android:textColor="#000"
+            android:id="@+id/shopname"
+            android:layout_toRightOf="@id/shop1id"
+            android:fontFamily="@font/overpass_semibold"
+            android:layout_marginLeft="20dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Chinese Cuisine \u2022 Thai \u2022 beverages"
+            android:layout_below="@id/shopname"
+            android:layout_toRightOf="@id/shop1id"
+            android:layout_marginLeft="20dp"
+            android:textSize="10sp"
+            android:fontFamily="@font/overpass_semibold"/>
+
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/discount"
+            android:id="@+id/discounticon"
+            android:layout_marginTop="50dp"
+            android:layout_marginLeft="20dp"
+            android:layout_toRightOf="@id/shop1id"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/shop1id"
+            android:text="5% Discount"
+            android:textColor="#803391"
+            android:layout_marginTop="60dp"
+            android:layout_marginLeft="70dp"/>
+        <View
+            android:layout_width="200dp"
+            android:layout_height="2dp"
+            android:background="#d3d3d3"
+            android:layout_toRightOf="@id/shop1id"
+            android:layout_marginLeft="20dp"
+            android:id="@+id/stroke"
+            android:layout_marginTop="10dp"
+            android:layout_below="@id/discounticon"
+
+            />
+
+        <ImageView
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:src="@drawable/star"
+            android:layout_below="@id/stroke"
+            android:id="@+id/staricon"
+            android:layout_toRightOf="@id/shop1id"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="5dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/staricon"
+            android:text="4.7    * 10 min"
+            android:layout_below="@id/stroke"
+            android:layout_marginTop="3dp"
+            android:layout_marginLeft="2dp"/>
+
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

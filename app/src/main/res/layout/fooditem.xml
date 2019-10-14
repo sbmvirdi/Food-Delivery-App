@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="180dp"
+    android:layout_width="180dp"
+    app:cardUseCompatPadding="true"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="10dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <ImageView
+        android:layout_width="match_parent"
+        android:id="@+id/foodpic1"
+        android:src="@drawable/pizza1"
+        android:layout_height="140dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Veg Pizza"
+        android:layout_below="@id/foodpic1"
+        android:fontFamily="@font/overpass_semibold"
+        android:textColor="#000"
+        android:textSize="10sp"
+        android:id="@+id/fooditemname"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="10dp"
+        />
+
+        <Button
+            android:layout_width="60dp"
+            android:layout_height="20dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="10dp"
+            android:layout_marginRight="10dp"
+            android:text="ADD"
+            android:id="@+id/add1"
+            android:textColor="#fff"
+            android:fontFamily="@font/overpass_semibold"
+            android:background="@drawable/greencircle"
+            android:layout_alignParentRight="true" />
+
+
+    </RelativeLayout>
+
+
+</androidx.cardview.widget.CardView>

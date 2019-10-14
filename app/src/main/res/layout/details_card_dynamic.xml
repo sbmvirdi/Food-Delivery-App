@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="650dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="40dp">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="600dp">
+
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Shop Name"
+        android:textColor="#000"
+        android:id="@+id/shopname_c"
+        android:textSize="25sp"
+        android:fontFamily="@font/overpass_semibold"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Shop speciality"
+        android:textSize="14sp"
+        android:id="@+id/speciality"
+        android:fontFamily="@font/overpass_semibold"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="50dp"
+        />
+
+
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentEnd="true"
+        android:src="@drawable/star2"
+        android:layout_marginTop="15dp"
+        android:id="@+id/rating_dc"
+        android:layout_marginRight="70dp"
+        android:layout_alignParentRight="true" />
+        <TextView
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginRight="40dp"
+            android:text="4.5"
+            android:id="@+id/rating_c"
+            android:textSize="20sp"
+            android:layout_marginTop="25dp"
+            android:layout_alignParentRight="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hashtag1"
+            android:background="@drawable/greycircle"
+            android:textColor="#fff"
+            android:padding="5dp"
+            android:textSize="15sp"
+            android:id="@+id/hashtag1"
+            android:clickable="true"
+            android:fontFamily="@font/overpass_semibold"
+            android:layout_below="@id/speciality"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="20dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hashtag2"
+            android:background="@drawable/greycircle"
+            android:textColor="#fff"
+            android:padding="5dp"
+            android:textSize="15sp"
+            android:id="@+id/hashtag2"
+            android:clickable="true"
+            android:fontFamily="@font/overpass_semibold"
+            android:layout_below="@id/speciality"
+            android:layout_marginTop="10dp"
+            android:layout_toRightOf="@id/hashtag1"
+            android:layout_marginLeft="2dp"/>
+
+         <androidx.recyclerview.widget.RecyclerView
+             android:layout_width="match_parent"
+             android:layout_height="450dp"
+             android:id="@+id/recyclerview"
+             android:layout_alignParentBottom="true"/>
+
+    </RelativeLayout>
+
+
+</androidx.cardview.widget.CardView>
