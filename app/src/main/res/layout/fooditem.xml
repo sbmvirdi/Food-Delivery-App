@@ -24,23 +24,39 @@
         android:textColor="#000"
         android:textSize="10sp"
         android:id="@+id/fooditemname"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="5dp"
         android:layout_marginLeft="10dp"
         />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="120"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@id/foodpic1"
+            android:fontFamily="@font/overpass_semibold"
+            android:textColor="#000"
+            android:textSize="15sp"
+            android:layout_marginEnd="5dp"
+            android:id="@+id/fooditemprice"
+            android:layout_marginTop="-25dp"
+            android:layout_marginLeft="10dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="5dp" />
+
         <Button
+            android:id="@+id/add1"
             android:layout_width="60dp"
             android:layout_height="20dp"
             android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginBottom="10dp"
             android:layout_marginRight="10dp"
-            android:text="ADD"
-            android:id="@+id/add1"
-            android:textColor="#fff"
-            android:fontFamily="@font/overpass_semibold"
+            android:layout_marginBottom="7dp"
             android:background="@drawable/greencircle"
-            android:layout_alignParentRight="true" />
+            android:fontFamily="@font/overpass_semibold"
+            android:text="ADD"
+            android:textColor="#fff" />
 
 
     </RelativeLayout>

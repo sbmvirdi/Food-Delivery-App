@@ -41,6 +41,19 @@
             android:fontFamily="@font/overpass_semibold"
             app:fontFamily="@font/overpass" />
 
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="68dp"
+            android:textColor="#fff"
+            android:text="Admin"
+            android:visibility="gone"
+            android:id="@+id/adminaccess"
+            android:background="@drawable/redcircle"
+            android:padding="0dp"
+            android:layout_alignParentRight="true" />
+
         <include layout="@layout/profile"
             android:layout_width="45dp"
             android:layout_height="45dp"

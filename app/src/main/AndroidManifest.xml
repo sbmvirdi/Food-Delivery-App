@@ -5,15 +5,16 @@
 
     <application
         android:allowBackup="true"
+        android:hardwareAccelerated="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:hardwareAccelerated="true"
         android:largeHeap="true"
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".Success"></activity>
+        <activity android:name=".AdminPortal"></activity>
+        <activity android:name=".Success" />
         <activity android:name=".ShoppingCart" />
         <activity android:name=".Signup" />
         <activity android:name=".LoginActivity" />

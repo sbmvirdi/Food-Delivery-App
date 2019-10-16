@@ -45,6 +45,7 @@
             android:text="Total: 131 INR"
             android:textColor="#00A800"
             android:textSize="20sp"
+            android:id="@+id/shopprice"
             android:fontFamily="@font/overpass_semibold"
 
             android:layout_alignParentBottom="true"
