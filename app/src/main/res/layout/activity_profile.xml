@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ProfileActivity">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:src="@drawable/user"
+        android:id="@+id/profileimage"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="Name"
+        android:id="@+id/profile_nametextview"
+        android:layout_below="@id/profileimage"
+        android:textColor="#000"
+        android:fontFamily="@font/overpass_semibold"
+        android:textSize="25sp"
+        android:layout_marginTop="20dp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/profile_nametextview"
+        android:text="{Name}"
+        android:id="@+id/profile_name"
+        android:textSize="20sp"
+        android:fontFamily="@font/overpass_semibold"
+        android:textColor="#000"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="Email"
+        android:id="@+id/profile_emailtextview"
+        android:layout_below="@id/profile_name"
+        android:textColor="#000"
+        android:fontFamily="@font/overpass_semibold"
+        android:textSize="25sp"
+        android:layout_marginTop="20dp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/profile_emailtextview"
+        android:text="{Email}"
+        android:id="@+id/profile_email"
+        android:textSize="20sp"
+        android:fontFamily="@font/overpass_semibold"
+        android:textColor="#000"
+        />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bluecircle"
+        android:text="Sign Out"
+        android:id="@+id/profilesignout"
+        android:layout_marginBottom="10dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:textColor="#fff"
+        android:textSize="25sp"
+        android:fontFamily="@font/overpass_semibold"
+
+        />
+
+
+
+
+
+</RelativeLayout>

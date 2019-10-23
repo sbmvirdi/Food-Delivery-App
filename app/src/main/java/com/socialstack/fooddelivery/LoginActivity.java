@@ -3,6 +3,7 @@ package com.socialstack.fooddelivery;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -22,6 +23,7 @@ public class LoginActivity extends AppCompatActivity {
     private EditText user,pass;
     private Button login,signup;
     private FirebaseAuth mAuth;
+    private ProgressDialog pd;
 
 
     @Override
@@ -33,17 +35,22 @@ public class LoginActivity extends AppCompatActivity {
         signup = findViewById(R.id.sign_up_screen);
         user = findViewById(R.id.email);
         pass = findViewById(R.id.pass);
+        pd = new ProgressDialog(this);
         if (mAuth.getCurrentUser()!=null){
             Intent i = new Intent(LoginActivity.this,MainActivity.class);
             startActivity(i);
             finish();
         }
 
-
+        pd.setTitle("Signing in");
+        pd.setMessage("Please Wait ...");
+        pd.setCancelable(false);
+        pd.hide();
 
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                pd.show();
                 username = user.getText().toString().trim();
                 password = pass.getText().toString().trim();
                 if (!TextUtils.isEmpty(username)|| !TextUtils.isEmpty(password)){
@@ -51,11 +58,13 @@ public class LoginActivity extends AppCompatActivity {
                        @Override
                        public void onComplete(@NonNull Task<AuthResult> task) {
                           if (task.isSuccessful()){
+                              pd.dismiss();
                               Toast.makeText(LoginActivity.this, "Successfully logged in!", Toast.LENGTH_SHORT).show();
                               Intent i = new Intent(LoginActivity.this,MainActivity.class);
                               startActivity(i);
                               finish();
                           }else{
+                              pd.dismiss();
                               Toast.makeText(LoginActivity.this, "An error occured!", Toast.LENGTH_SHORT).show();
                           }
                        }
@@ -63,6 +72,7 @@ public class LoginActivity extends AppCompatActivity {
 
                 }
                 else{
+                    pd.dismiss();
                     Toast.makeText(LoginActivity.this, "Enter all the details!", Toast.LENGTH_SHORT).show();
                 }
             }

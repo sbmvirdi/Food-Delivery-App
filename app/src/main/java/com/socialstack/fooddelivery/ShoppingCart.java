@@ -27,7 +27,9 @@ import com.google.firebase.database.Query;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class ShoppingCart extends AppCompatActivity {
     private Button place;
@@ -36,6 +38,10 @@ public class ShoppingCart extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private String uid;
     private List<CartModel> cartdata;
+    private long value=0;
+    private TextView TotalAmount;
+    private String items="";
+    private String shopuid;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +49,10 @@ public class ShoppingCart extends AppCompatActivity {
         setContentView(R.layout.activity_shopping_cart);
         mAuth = FirebaseAuth.getInstance();
         place = findViewById(R.id.placeorder);
+        TotalAmount = findViewById(R.id.totalamount);
+        Bundle b = getIntent().getExtras();
+        shopuid = b.getString("uid_shop");
+
         if (mAuth.getCurrentUser()!=null){
             uid = mAuth.getCurrentUser().getUid();
         }
@@ -58,6 +68,10 @@ public class ShoppingCart extends AppCompatActivity {
             protected void onBindViewHolder(@NonNull cartholder cartholder, int i, @NonNull CartModel cartModel) {
                 cartholder.setdata(cartModel.getName(),cartModel.getPrice(),cartModel.getImage());
                 cartdata.add(cartModel);
+                value+=cartModel.getPrice();
+                TotalAmount.setText("Total :: "+value);
+                items = items+cartModel.getName()+",";
+                Toast.makeText(ShoppingCart.this, ""+items, Toast.LENGTH_SHORT).show();
             }
 
             @NonNull
@@ -78,16 +92,28 @@ public class ShoppingCart extends AppCompatActivity {
         }
         adapter.notifyDataSetChanged();
 
+                //for (CartModel m: cartdata){
+         //   value = value + m.getPrice();
+         //   Toast.makeText(ShoppingCart.this, ""+ value, Toast.LENGTH_SHORT).show();
+        //}
+
 
         place.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                DatabaseReference df = FirebaseDatabase.getInstance().getReference().child("users").child(uid);
-                df.push().setValue(cartdata).addOnCompleteListener(new OnCompleteListener<Void>() {
+                DatabaseReference df = FirebaseDatabase.getInstance().getReference().child("vendor_user").child(shopuid).child("orders");
+                long time = timestamp();
+                String times = time+"";
+                df.child(times).child("amount").setValue(value);
+                df.child(times).child("orderid").setValue(time);
+                df.child(times).child("code").setValue(-time);
+                df.child(times).child("items").setValue(items).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                      if (task.isSuccessful()){
+
+
                          Toast.makeText(ShoppingCart.this, "Order Placed", Toast.LENGTH_SHORT).show();
                          DatabaseReference d = FirebaseDatabase.getInstance().getReference().child("cart").child(uid);
                          d.removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -115,7 +141,7 @@ public class ShoppingCart extends AppCompatActivity {
 
                                          }
 
-                                         Toast.makeText(ShoppingCart.this, "Cart khali ho gya!", Toast.LENGTH_SHORT).show();
+                                         //Toast.makeText(ShoppingCart.this, "Cart khali ho gya!", Toast.LENGTH_SHORT).show();
                                          Intent i = new Intent(ShoppingCart.this, Success.class);
                                          startActivity(i);
                                          finish();
@@ -152,5 +178,15 @@ public class ShoppingCart extends AppCompatActivity {
             Picasso.get().load(image).into(this.image);
 
         }
+
+
+
     }
+
+    public Long timestamp(){
+        Long tsLong = System.currentTimeMillis();
+        return tsLong;
+    }
+
+
 }

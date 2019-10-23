@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="140dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="10dp">
+    
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        
+        <ImageView
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:id="@+id/vendororderimage"
+            android:src="@drawable/ordershow"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Order Id:"
+            android:id="@+id/orderid_textview"
+            android:layout_toRightOf="@id/vendororderimage"
+            android:layout_marginTop="30dp"
+            android:fontFamily="@font/overpass_semibold"
+            android:layout_marginLeft="20dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/overpass_semibold"
+            android:text="11716141"
+            android:id="@+id/orderid_vendor"
+            android:layout_marginLeft="5dp"
+            android:layout_toRightOf="@id/orderid_textview"
+            android:layout_marginTop="30dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Order Items:"
+            android:id="@+id/orderitem_textview"
+            android:layout_toRightOf="@id/vendororderimage"
+            android:layout_marginTop="5dp"
+            android:layout_below="@id/orderid_vendor"
+            android:fontFamily="@font/overpass_semibold"
+            android:layout_marginLeft="20dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/overpass_semibold"
+            android:text="Pizza,Cheeze"
+            android:id="@+id/orderitem_vendor"
+            android:layout_marginLeft="5dp"
+            android:layout_below="@id/orderid_textview"
+            android:layout_toRightOf="@id/orderitem_textview"
+            android:layout_marginTop="5dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Amount(in Rs):"
+            android:id="@+id/orderamount_textview"
+            android:layout_toRightOf="@id/vendororderimage"
+
+            android:layout_marginTop="5dp"
+            android:layout_below="@id/orderitem_vendor"
+            android:fontFamily="@font/overpass_semibold"
+            android:layout_marginLeft="20dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/overpass_semibold"
+            android:text="300"
+            android:id="@+id/orderamount_vendor"
+            android:layout_marginLeft="5dp"
+            android:layout_below="@id/orderitem_vendor"
+            android:layout_toRightOf="@id/orderamount_textview"
+            android:layout_marginTop="5dp"/>
+
+
+        
+        
+    </RelativeLayout>
+
+    
+</androidx.cardview.widget.CardView>

@@ -19,7 +19,7 @@
         android:textSize="25sp"
         android:fontFamily="@font/overpass_semibold"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         />
     <TextView
         android:layout_width="wrap_content"
@@ -29,7 +29,7 @@
         android:id="@+id/speciality"
         android:fontFamily="@font/overpass_semibold"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="40dp"
         />
 
 
@@ -38,7 +38,7 @@
         android:layout_height="50dp"
         android:layout_alignParentEnd="true"
         android:src="@drawable/star2"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="05dp"
         android:id="@+id/rating_dc"
         android:layout_marginRight="70dp"
         android:layout_alignParentRight="true" />
@@ -50,7 +50,7 @@
             android:text="4.5"
             android:id="@+id/rating_c"
             android:textSize="20sp"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="15dp"
             android:layout_alignParentRight="true" />
 
         <TextView
@@ -65,7 +65,7 @@
             android:clickable="true"
             android:fontFamily="@font/overpass_semibold"
             android:layout_below="@id/speciality"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="5dp"
             android:layout_marginLeft="20dp"/>
 
         <TextView
@@ -80,15 +80,17 @@
             android:clickable="true"
             android:fontFamily="@font/overpass_semibold"
             android:layout_below="@id/speciality"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="5dp"
             android:layout_toRightOf="@id/hashtag1"
             android:layout_marginLeft="2dp"/>
 
          <androidx.recyclerview.widget.RecyclerView
              android:layout_width="match_parent"
-             android:layout_height="450dp"
+             android:layout_height="300dp"
+             android:layout_alignParentTop="true"
+             android:layout_marginTop="100dp"
              android:id="@+id/recyclerview"
-             android:layout_alignParentBottom="true"/>
+             />
 
     </RelativeLayout>
 

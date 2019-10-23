@@ -22,9 +22,21 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
-        android:layout_height="550dp"
+        android:layout_height="400dp"
         android:layout_marginTop="100dp"
         android:id="@+id/cartrec"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Total"
+        android:fontFamily="@font/overpass_semibold"
+        android:textSize="25sp"
+        android:id="@+id/totalamount"
+        android:layout_below="@id/cartrec"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="10dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="10dp" />
 
     <Button
         android:layout_width="match_parent"

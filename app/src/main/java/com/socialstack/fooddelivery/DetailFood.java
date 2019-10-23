@@ -45,6 +45,8 @@ public class DetailFood extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private String uid;
     private Button gotocart;
+    private int shopno=0;
+    private DatabaseReference vendorupdate;
 
 
 
@@ -59,6 +61,7 @@ public class DetailFood extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         if (mAuth.getCurrentUser()!=null){
             uid = mAuth.getCurrentUser().getUid();
+
         }
         else{
             Intent i = new Intent(this,LoginActivity.class);
@@ -81,51 +84,55 @@ public class DetailFood extends AppCompatActivity {
         ht2.setText(b.getString("hashtag2"));
 
 
+       //Log.e("USER",mAuth.getCurrentUser().getEmail()+"");
 
-
-
-       gotocart.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View v) {
-               Intent i = new Intent(DetailFood.this,ShoppingCart.class);
-               startActivity(i);
-           }
-       });
 
 
 
         if (shop.equals("1")) {
+            shopno=1;
             shopicon.setImageResource(R.drawable.dominospizza);
             ref = FirebaseDatabase.getInstance().getReference().child("food").child(uid).child("shop1");
             df = FirebaseDatabase.getInstance().getReference().child("food").child(uid).child("shop1");
-            Toast.makeText(this, ""+shop, Toast.LENGTH_SHORT).show();
+           // vendorupdate = FirebaseDatabase.getInstance().getReference().child("vendor_user").child("9iQMncHMoPYvtDt7LF0CzX44tK52");
+            //Toast.makeText(this, ""+shop, Toast.LENGTH_SHORT).show();
         }
         else if (shop.equals("2")){
+            shopno=2;
             shopicon.setImageResource(R.drawable.df2);
             ref = FirebaseDatabase.getInstance().getReference().child("food").child(uid).child("shop2");
             df = FirebaseDatabase.getInstance().getReference().child("food").child(uid).child("shop2");
-            Toast.makeText(this, ""+shop, Toast.LENGTH_SHORT).show();
+           // vendorupdate = FirebaseDatabase.getInstance().getReference().child("vendor_user").child("3V6W0tzl6EX3RwqpULCVDVqzDhG2");
+
+            // Toast.makeText(this, ""+shop, Toast.LENGTH_SHORT).show();
 
         }
         else if (shop.equals("3")){
+            shopno=3;
             shopicon.setImageResource(R.drawable.df3);
             ref = FirebaseDatabase.getInstance().getReference().child("food").child(uid).child("shop3");
             df = FirebaseDatabase.getInstance().getReference().child("food").child(uid).child("shop3");
-            Toast.makeText(this, ""+shop, Toast.LENGTH_SHORT).show();
+            //vendorupdate = FirebaseDatabase.getInstance().getReference().child("vendor_user").child("Vwm8Z0migHRX7CTMXcBStf2hOXV2");
+            //Toast.makeText(this, ""+shop, Toast.LENGTH_SHORT).show();
 
         }
         else if (shop.equals("4")){
+            shopno=4;
             shopicon.setImageResource(R.drawable.df4);
             ref = FirebaseDatabase.getInstance().getReference().child("food").child(uid).child("shop4");
             df = FirebaseDatabase.getInstance().getReference().child("food").child(uid).child("shop4");
-            Toast.makeText(this, ""+shop, Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this, ""+shop, Toast.LENGTH_SHORT).show();
+            //vendorupdate = FirebaseDatabase.getInstance().getReference().child("vendor_user").child("2nXgGaDHJBVdo1fGfR9vffdHmj12");
+
 
         }
         else if (shop.equals("5")){
+            shopno=5;
             shopicon.setImageResource(R.drawable.df5);
             ref = FirebaseDatabase.getInstance().getReference().child("food").child(uid).child("shop5");
             df = FirebaseDatabase.getInstance().getReference().child("food").child(uid).child("shop5");
-            Toast.makeText(this, ""+shop, Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this, ""+shop, Toast.LENGTH_SHORT).show();
+            //vendorupdate = FirebaseDatabase.getInstance().getReference().child("vendor_user").child("AcFgULvMoFgYPlruHLpyN7U9gQC3");
 
         }
 
@@ -160,6 +167,27 @@ public class DetailFood extends AppCompatActivity {
             Toast.makeText(this, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
         }
 
+        gotocart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(DetailFood.this,ShoppingCart.class);
+                switch (shopno){
+                    case 1: i.putExtra("uid_shop","9iQMncHMoPYvtDt7LF0CzX44tK52");
+                            break;
+                    case 2: i.putExtra("uid_shop","3V6W0tzl6EX3RwqpULCVDVqzDhG2");
+                        break;
+                    case 3: i.putExtra("uid_shop","Vwm8Z0migHRX7CTMXcBStf2hOXV2");
+                        break;
+                    case 4: i.putExtra("uid_shop","2nXgGaDHJBVdo1fGfR9vffdHmj12");
+                        break;
+                    case 5: i.putExtra("uid_shop","xLz8awmzqIdDzCJZ95XcHBs7XUz1");
+                        break;
+
+                }
+                startActivity(i);
+            }
+        });
+
 
 
     }
@@ -173,6 +201,7 @@ public class DetailFood extends AppCompatActivity {
         private boolean clicked;
         private boolean button_clicked;
         View v;
+
 
         public myviewholder(@NonNull View itemView) {
             super(itemView);
@@ -189,14 +218,14 @@ public class DetailFood extends AppCompatActivity {
                      @Override
                      public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                          price_long = (long) dataSnapshot.child("price").getValue();
-                         Toast.makeText(DetailFood.this, ""+price_long, Toast.LENGTH_SHORT).show();
+                         //Toast.makeText(DetailFood.this, ""+price_long, Toast.LENGTH_SHORT).show();
                          button_clicked = (boolean) dataSnapshot.child("clicked").getValue();
 
 
 
                          if (button_clicked) {
 
-                             Toast.makeText(DetailFood.this, ""+clicked, Toast.LENGTH_SHORT).show();
+                            // Toast.makeText(DetailFood.this, ""+clicked, Toast.LENGTH_SHORT).show();
                              df.child(id).child("clicked").setValue(false).addOnCompleteListener(new OnCompleteListener<Void>() {
                                  @Override
                                  public void onComplete(@NonNull Task<Void> task) {
@@ -331,4 +360,6 @@ public class DetailFood extends AppCompatActivity {
             }
         });
     }
+
+
 }

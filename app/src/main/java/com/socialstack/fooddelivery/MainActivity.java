@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -24,7 +25,9 @@ public class MainActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private String uid;
     private TextView name;
-    private Button admin;
+    private DatabaseReference isVendor;
+    private boolean isitvendor;
+    private ProgressDialog pd;
 
     private MaterialSpinner spinner;
     @Override
@@ -33,10 +36,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         mAuth = FirebaseAuth.getInstance();
         name = findViewById(R.id.greeting);
-        admin = findViewById(R.id.adminaccess);
-        admin.setVisibility(View.GONE);
-
-
+        pd = new ProgressDialog(this);
+        pd.setTitle("Personalizing Dashboard");
+        pd.setMessage("Please Wait...");
+        pd.show();
+        pd.setCancelable(false);
         if (mAuth.getCurrentUser() == null){
             Intent i = new Intent(MainActivity.this,LoginActivity.class);
             startActivity(i);
@@ -46,18 +50,20 @@ public class MainActivity extends AppCompatActivity {
             uid = mAuth.getCurrentUser().getUid();
         }
 
-
-        DatabaseReference admind = FirebaseDatabase.getInstance().getReference().child("admin");
-        admind.addValueEventListener(new ValueEventListener() {
+        isVendor = FirebaseDatabase.getInstance().getReference().child("vendor").child(uid);
+        isVendor.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                boolean isAdmin = (boolean) dataSnapshot.child(uid).getValue();
-                Toast.makeText(MainActivity.this, ""+isAdmin, Toast.LENGTH_SHORT).show();
-                if (isAdmin){
-                    admin.setVisibility(View.VISIBLE);
+                isitvendor = (boolean) dataSnapshot.getValue();
+                //Toast.makeText(MainActivity.this, ""+isitvendor, Toast.LENGTH_SHORT).show();
+                if (isitvendor){
+                    pd.dismiss();
+                    Intent i = new Intent(MainActivity.this,Vendor.class);
+                    startActivity(i);
+                    finish();
                 }
                 else {
-                    admin.setVisibility(View.GONE);
+                    pd.dismiss();
                 }
             }
 
@@ -66,6 +72,9 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+
+
         domino = findViewById(R.id.domino_card);
         kitchen = findViewById(R.id.kitchen_card);
         oven = findViewById(R.id.oven_card);
@@ -209,21 +218,21 @@ public class MainActivity extends AppCompatActivity {
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mAuth.signOut();
-                Intent i = new Intent(MainActivity.this,LoginActivity.class);
+                Intent i = new Intent(MainActivity.this,ProfileActivity.class);
                 startActivity(i);
-                finish();
             }
         });
 
 
-        admin.setOnClickListener(new View.OnClickListener() {
+      /* admin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(MainActivity.this,AdminPortal.class);
                 startActivity(i);
             }
         });
+
+       */
 
 
 

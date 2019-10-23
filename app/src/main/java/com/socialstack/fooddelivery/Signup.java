@@ -3,6 +3,7 @@ package com.socialstack.fooddelivery;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -27,6 +28,7 @@ public class Signup extends AppCompatActivity {
     private Button signup,loginScreen;
     private EditText mName,mEmail,mPassword;
     private FirebaseAuth mAuth;
+    private ProgressDialog pd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,42 +40,57 @@ public class Signup extends AppCompatActivity {
         mPassword = findViewById(R.id.pass_signup);
         loginScreen = findViewById(R.id.to_login_screen);
         mAuth = FirebaseAuth.getInstance();
+        pd = new ProgressDialog(this);
+        pd.setMessage("Please Wait ...");
         if (mAuth.getCurrentUser()!=null){
             Intent i = new Intent(Signup.this,MainActivity.class);
             startActivity(i);
             finish();
 
         }
-
+        pd.hide();
+        pd.setTitle("Signing Up");
+        pd.setCancelable(false);
 
         signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                pd.show();
+                //Toast.makeText(Signup.this, "initiated", Toast.LENGTH_SHORT).show();
                 final String name = mName.getText().toString().trim();
                 String email = mEmail.getText().toString().trim();
                 String pass = mPassword.getText().toString().trim();
 
                 if (!TextUtils.isEmpty(email) || !TextUtils.isEmpty(pass) || !TextUtils.isEmpty(name)){
+                    if (pass.length() >10) {
 
-                    mAuth.createUserWithEmailAndPassword(email,pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                        @Override
-                        public void onComplete(@NonNull Task<AuthResult> task) {
-                          if (task.isSuccessful()){
-                              Toast.makeText(Signup.this, "Sign up successful", Toast.LENGTH_SHORT).show();
-                              String uid  = mAuth.getCurrentUser().getUid();
-                              DatabaseReference d = FirebaseDatabase.getInstance().getReference().child("users").child(uid);
-                              d.child("name").setValue(name);
-                              DatabaseReference d1 = FirebaseDatabase.getInstance().getReference().child("admin");
-                              d1.child(uid).setValue(false);
-                              initialsetup(uid);
-                              Intent i = new Intent(Signup.this,MainActivity.class);
-                              startActivity(i);
-                              finish();
-                          }
-                        }
-                    });
+                        mAuth.createUserWithEmailAndPassword(email, pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                if (task.isSuccessful()) {
+                                    Toast.makeText(Signup.this, "Sign up successful", Toast.LENGTH_SHORT).show();
+                                    String uid = mAuth.getCurrentUser().getUid();
+                                    DatabaseReference d = FirebaseDatabase.getInstance().getReference().child("users").child(uid);
+                                    d.child("name").setValue(name);
+                                    DatabaseReference r = FirebaseDatabase.getInstance().getReference().child("vendor").child(uid);
+                                    r.setValue(false);
+                                    initialsetup(uid);
+                                    pd.dismiss();
+                                    Intent i = new Intent(Signup.this, MainActivity.class);
+                                    startActivity(i);
+                                    finish();
+
+                                }
+                            }
+                        });
+                    }
+                    else {
+                        pd.dismiss();
+                        Toast.makeText(Signup.this, "Length of Password should be greater than 10", Toast.LENGTH_SHORT).show();
+                    }
 
                 }else{
+                    pd.dismiss();
                     Toast.makeText(Signup.this, "Enter all the details", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -92,6 +109,7 @@ public class Signup extends AppCompatActivity {
     }
 
     public void initialsetup(String uid){
+
 
         Map<String,Object> shop = new HashMap<>();
         shop.put("msdjhdsasda",new itemmodel("Corn Pizza","https://firebasestorage.googleapis.com/v0/b/food-delivery-48387.appspot.com/o/pizza1.png?alt=media&token=c4662c98-7f91-4fa9-a293-36dc7e7389cf",false,120,"msdjhdsasda"));
