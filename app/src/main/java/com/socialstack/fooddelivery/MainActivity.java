@@ -44,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
         if (mAuth.getCurrentUser() == null){
             Intent i = new Intent(MainActivity.this,LoginActivity.class);
             startActivity(i);
+            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
             finish();
         }
         else {
@@ -60,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
                     pd.dismiss();
                     Intent i = new Intent(MainActivity.this,Vendor.class);
                     startActivity(i);
+                    i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     finish();
                 }
                 else {
