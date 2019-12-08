@@ -52,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         isVendor = FirebaseDatabase.getInstance().getReference().child("vendor").child(uid);
+
         isVendor.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -68,6 +69,9 @@ public class MainActivity extends AppCompatActivity {
                     pd.dismiss();
                 }
             }
+
+
+
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
